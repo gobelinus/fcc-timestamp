@@ -3,6 +3,8 @@ var moment = require('moment');
 
 var app = express();
 app.set('view engine', 'jade');
+app.use('/static', express.static(__dirname + '/public'));
+
 
 app.get('/:timeStr', function (req, res) {
   // moment expects fload for unix timestamp for parsing, so parse input to float
