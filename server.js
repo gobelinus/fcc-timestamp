@@ -37,6 +37,12 @@ app.use(function(req, res, next){
   });
 });
 
-app.listen(8080, function () {
-  console.log('Example app listening on port 8080!');
+// ref: http://stackoverflow.com/a/15693371
+// Heroku dynamically assigns your app a port,
+// so you can't set the port to a fixed number.
+// Heroku adds the port to the env, so you can pull
+// it from there.
+var appPort = process.env.PORT || 8080;
+app.listen(appPort, function () {
+  console.log('App listening on port ' + appPort);
 });
